@@ -17,21 +17,25 @@
   color: #2e2f42;
 }
 .feedback-form input {
-  border: 1px solid #808080;
+  box-sizing: border-box;
+  border: 1px solid #7f5959;
   border-radius: 4px;
   width: 360px;
   height: 40px;
   transition: border-color, linear, 250ms;
+  padding: 8px;
 }
 .feedback-form input:hover {
   border-color: #000;
 }
 .feedback-form textarea {
+  box-sizing: border-box;
   border: 1px solid #808080;
   border-radius: 4px;
   width: 360px;
   height: 80px;
   transition: border-color, linear, 250ms;
+  padding: 8px;
 }
 .feedback-form textarea:hover {
   border-color: #000;
