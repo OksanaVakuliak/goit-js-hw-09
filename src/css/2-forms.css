@@ -36,6 +36,7 @@
   height: 80px;
   transition: border-color, linear, 250ms;
   padding: 8px;
+  resize: none;
 }
 .feedback-form textarea:hover {
   border-color: #000;
