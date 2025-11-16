@@ -2,7 +2,10 @@ const refs = {
   feedbackForm: document.querySelector('.feedback-form'),
 };
 
-let formData = {};
+let formData = {
+  email: '',
+  message: '',
+};
 
 const fillFeedbackFormFields = () => {
   const formDataFromLS = JSON.parse(
@@ -11,6 +14,15 @@ const fillFeedbackFormFields = () => {
 
   if (formDataFromLS === null) {
     return;
+  }
+
+  if (formDataFromLS) {
+    formData = { ...formData, ...formDataFromLS };
+    Object.keys(formData).forEach(key => {
+      if (refs.feedbackForm.elements[key]) {
+        refs.feedbackForm.elements[key].value = formData[key];
+      }
+    });
   }
 
   formData = formDataFromLS;
@@ -49,9 +61,16 @@ const onFeedbackFormSubmit = event => {
 
   const { target: feedbackForm } = event;
 
+  console.log(formData);
+
   feedbackForm.reset();
   localStorage.removeItem('feedback-form-state');
+
+  formData = {
+    email: '',
+    message: '',
+  };
 };
 
-refs.feedbackForm.addEventListener('change', onFeedbackFormFieldChange);
+refs.feedbackForm.addEventListener('input', onFeedbackFormFieldChange);
 refs.feedbackForm.addEventListener('submit', onFeedbackFormSubmit);
